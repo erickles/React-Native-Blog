@@ -10,6 +10,8 @@ const CreateScreen = ({ navigation }) => {
     // const blogPost = state.find((blogPost) => blogPost.id === navigation.getParam('id'));
 
     return <BlogPostForm onSubmit={(title, content) => {
+        console.log('title', title);
+        console.log('content', content);
         addBlogPost(title, content, () => navigation.navigate('Index'));
     }} />
 

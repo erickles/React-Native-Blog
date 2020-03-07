@@ -22,13 +22,13 @@ const IndexScreen = ({ navigation }) => {
         <View>
             <FlatList
                 data={state}
-                keyExtractor={(blogPost) => blogPost.id}
+                keyExtractor={(blogPost) => blogPost.id.toString()}
                 renderItem={({ item }) => {
                     return <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>
 
                         <View style={styles.row}>
                             <Text style={styles.title}>{item.title}</Text>
-                            <TouchableOpacity onPress={deleteBlogPost(item.id)}>
+                            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                                 <Feather style={styles.icon} name='trash' />
                             </TouchableOpacity>
                         </View>
@@ -41,10 +41,10 @@ const IndexScreen = ({ navigation }) => {
 
 IndexScreen.navigationOptions = ({ navigation }) => {
     return {
-        headerRight: (
+        headerRight: () => 
             <TouchableOpacity onPress={() => navigation.navigate('Create')}>
                 <Feather size={30} name='plus' />
-            </TouchableOpacity>)
+            </TouchableOpacity>
     };
 };
 
